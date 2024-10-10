@@ -10,6 +10,9 @@ CPU Architecture : MIPS with Little Endian
 testing based on [Debian](https://github.com/jubinson/debian-rootfs) 
 
 ```
+$ git clone https://github.com/Piorosen/iptime-to-ubuntu
+$ cd iptime-to-ubuntu
+
 $ sudo apt update
 $ sudo apt install -y multistrap binfmt-support binfmt-support qemu-user-static debootstrap qemu-system-mips binwalk
 

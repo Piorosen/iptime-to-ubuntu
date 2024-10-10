@@ -1,5 +1,0 @@
-#!/bin/bash
-
-wget "https://dl.google.com/android/repository/android-ndk-r25b-linux.zip?utm_source=developer.android.com&utm_medium=referral" -O components/android-ndk-r25b.zip
-unzip -o components/android-ndk-r25b.zip -d components
-echo 'export PATH=$(pwd)/components/android-ndk-r25b/toolchains/llvm/prebuilt/linux-x86_64/bin:$PATH' >> ~/.bashrc && source ~/.bashrc

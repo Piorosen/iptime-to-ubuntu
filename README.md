@@ -10,25 +10,26 @@ CPU Architecture : MIPS with Little Endian
 testing based on [Debian](https://github.com/jubinson/debian-rootfs) 
 
 ```
-sudo apt update
-sudo apt install -y multistrap binfmt-support binfmt-support qemu-user-static debootstrap qemu-system-mips binwalk
+$ sudo apt update
+$ sudo apt install -y multistrap binfmt-support binfmt-support qemu-user-static debootstrap qemu-system-mips binwalk
 
 # wget https://download.iptime.co.kr/online_upgrade/a1004ns_ml_12_152.bin
-cp ./resources/a1004ns_ml_12_152.bin .
+$ cp ./resources/a1004ns_ml_12_152.bin .
 
 # wget https://www.dropbox.com/s/m80krqbeb09g2ht/mips-rootfs-20170318T103202Z.tar.gz?dl=1 && mv mips-rootfs-20170318T103202Z.tar.gz mips-rootfs.tar.gz
 # origin from https://github.com/jubinson/debian-rootfs
-cp ./resources/mips-rootfs.tar.gz .
+$ cp ./resources/mips-rootfs.tar.gz .
 
-sudo binwalk ./a1004ns_ml_12_152.bin # if you want to see detail of binary.
-sudo binwalk -e ./a1004ns_ml_12_152.bin --run-as=root
-mkdir ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/root
-tar -zxf mips-rootfs.tar.gz -C ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/root
+$ sudo binwalk ./a1004ns_ml_12_152.bin # if you want to see detail of binary.
+$ sudo binwalk -e ./a1004ns_ml_12_152.bin --run-as=root
+$ sudo mkdir ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/root
+$ sudo tar -zxf mips-rootfs.tar.gz -C ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/root
 
-cd ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/
-sudo cp /usr/bin/qemu-mips-static ./
+$ cd ./_a1004ns_ml_12_152.bin.extracted/squashfs-root/
+$ sudo mv ./root/mips-rootfs-20170318T103202Z ./root/mips-rootfs
+$ sudo cp /usr/bin/qemu-mipsel-static ./
 
-sudo chroot . ./qemu-mipsel-static ./bin/ash
+$ sudo chroot . ./qemu-mipsel-static ./bin/ash
 
-echo "cd ~/mips-rootfs && chroot ."
+# chroot ~/mips-rootfs
 ```

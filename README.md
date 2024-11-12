@@ -34,5 +34,6 @@ $ sudo cp /usr/bin/qemu-mipsel-static ./
 
 $ sudo chroot . ./qemu-mipsel-static ./bin/ash
 
+# echo "nameserver 8.8.8.8" > /etc/resolv.conf
 # chroot ~/mips-rootfs
 ```
